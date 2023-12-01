@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\cacat\cacat\CardGameBase.cpp" />
-    <ClCompile Include="..\..\cacat\cacat\PokerGameBase.cpp" />
-    <ClCompile Include="..\..\cacat\cacat\Source.cpp" />
+    <ClCompile Include="CardGameBase.cpp" />
+    <ClCompile Include="PokerGameBase.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\cacat\cacat\CardGameBase.h" />
-    <ClInclude Include="..\..\cacat\cacat\PokerGameBase.h" />
+    <ClInclude Include="CardGameBase.h" />
+    <ClInclude Include="PokerGameBase.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

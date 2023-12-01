@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\cacat\cacat\CardGameBase.cpp">
+    <ClCompile Include="CardGameBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\cacat\cacat\PokerGameBase.cpp">
+    <ClCompile Include="PokerGameBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\cacat\cacat\Source.cpp">
+    <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\cacat\cacat\CardGameBase.h">
+    <ClInclude Include="CardGameBase.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\cacat\cacat\PokerGameBase.h">
+    <ClInclude Include="PokerGameBase.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
