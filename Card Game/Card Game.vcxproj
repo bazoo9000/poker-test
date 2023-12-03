@@ -19,13 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CardGameBase.cpp" />
-    <ClCompile Include="PokerGameBase.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="src\CardGameCore\CardGameBase.cpp" />
+    <ClCompile Include="src\CardGameCore\PokerGameBase.cpp" />
+    <ClCompile Include="src\ScoreHandler\ScoreHandler.cpp" />
+    <ClCompile Include="src\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CardGameBase.h" />
-    <ClInclude Include="PokerGameBase.h" />
+    <ClInclude Include="src\CardGameCore\CardGameBase.h" />
+    <ClInclude Include="src\CardGameCore\PokerGameBase.h" />
+    <ClInclude Include="src\ScoreHandler\ScoreHandler.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
