@@ -35,10 +35,14 @@ protected:
 	void RandomizeDeck();
 	void ClearDeck();
 	void ClearWasteDeck();
+	std::vector<Card> DealHand(std::queue<Card>& deck, std::size_t handSize);
+	Card DrawCard(std::queue<Card>& deck);
 
 protected:
 	std::queue<Card> m_Deck;
-	std::queue<Card> m_WasteDeck; // in case you try to play UNO for example, you create another deck to put the cards there
+
+	// in case you try to play UNO for example, you create another deck to put the cards here
+	std::queue<Card> m_WasteDeck;
 
 private:
 	const std::vector<std::string> CARD_NUMBERS = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };

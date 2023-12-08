@@ -1,4 +1,5 @@
 #include "PokerGameBase.h"
+#include <conio.h> 
 
 using std::map;
 using std::string;
@@ -18,38 +19,54 @@ PokerGameBase::~PokerGameBase()
 
 void PokerGameBase::Play()
 {
-	m_Hand = DealHand(m_Deck);
-	ShowHand();
-	for (int i = 0; i < 5; i++)
+	// Begining
+	cout << "Hello and welcome to Poker! Would you like to play?\n";
+	cout << "1 for yes\n";
+	cout << "0 for no\n";
+	bool wantStart;
+	std::cin >> wantStart;
+	if (!wantStart)
 	{
-		bool wantChange;
-		std::cin >> wantChange;
-		if (wantChange)
+		system("cls");
+		cout << "Goodbye!\n";
+		return;
+	}
+
+	system("cls");
+
+	while (true)
+	{
+		// Game starts here
+		m_Hand = DealHand(m_Deck, 5);
+		ShowHand();
+		for (int i = 0; i < 5; i++)
 		{
-			m_Hand[i] = DrawCard(m_Deck);
+			bool wantChange;
+			std::cin >> wantChange;
+			if (wantChange)
+			{
+				m_Hand[i] = DrawCard(m_Deck);
+			}
+		}
+
+		system("cls");
+		ShowHand();
+
+		WhatWinningHandIs(HandCheck());
+
+		// Endgame
+		cout << "\n\nGame is Over! Would you like to continue?\n";
+		cout << "1 for yes\n";
+		cout << "0 for no\n";
+		bool wantRestart;
+		std::cin >> wantRestart;
+		if (!wantRestart)
+		{
+			system("cls");
+			cout << "Goodbye!\n";
+			return;
 		}
 	}
-	ShowHand();
-
-	WhatWinningHandIs(HandCheck());
-}
-
-vector<Card> PokerGameBase::DealHand(queue<Card>& deck, size_t handSize)
-{
-	vector<Card> hand(handSize);
-
-	for (int i = 0; i < handSize; i++)
-	{
-		hand[i] = m_Deck.front();
-		m_Deck.pop();
-	}
-
-	return hand;
-}
-
-Card PokerGameBase::DrawCard(queue<Card>& deck)
-{
-	return DealHand(deck, 1)[0];
 }
 
 void PokerGameBase::ShowHand() 
@@ -60,7 +77,7 @@ void PokerGameBase::ShowHand()
 	}
 }
 
-PokerHand PokerGameBase::HandCheck() 
+PokerGameBase::PokerHand PokerGameBase::HandCheck()
 {
 	SortHand();
 

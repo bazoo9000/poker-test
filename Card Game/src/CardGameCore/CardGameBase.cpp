@@ -80,3 +80,21 @@ void CardGameBase::ClearWasteDeck()
 {
 	while (!m_WasteDeck.empty()) m_WasteDeck.pop();
 }
+
+vector<Card> CardGameBase::DealHand(queue<Card>& deck, size_t handSize)
+{
+	vector<Card> hand(handSize);
+
+	for (int i = 0; i < handSize; i++)
+	{
+		hand[i] = deck.front();
+		deck.pop();
+	}
+
+	return hand;
+}
+
+Card CardGameBase::DrawCard(queue<Card>& deck)
+{
+	return DealHand(deck, 1)[0];
+}
