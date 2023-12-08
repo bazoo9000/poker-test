@@ -66,6 +66,9 @@ void PokerGameBase::Play()
 			cout << "Goodbye!\n";
 			return;
 		}
+
+		// Clear console
+		system("cls");
 	}
 }
 
