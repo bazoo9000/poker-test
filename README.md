@@ -8,4 +8,3 @@ How to play this poker:
 - and wich cards to discard and change (1 to change)
 - you have to input 5 numbers (ex: 1 0 0 1 1)
 - it will show the new cards (if changed) and give you the result
-- to play again you have to close and re-open the .exe (no loops for the moment)
