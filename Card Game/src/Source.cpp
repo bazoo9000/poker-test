@@ -1,10 +1,10 @@
-#include "CardGameCore/PokerGameBase.h"
+#include "CardGameCore/Poker.h"
 
 int main()
 {
-	PokerGameBase* game = new PokerGameBase();
+	CardGame* game = new Poker(false);
 
-	game->Play();
+	game->ShowCard(0);
 
 	delete game;
 

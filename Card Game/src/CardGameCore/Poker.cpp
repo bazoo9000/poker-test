@@ -1,29 +1,34 @@
-#include "PokerGameBase.h"
+#include "Poker.h"
 #include <conio.h> 
 
 using std::map;
 using std::string;
-using std::queue;
+using std::stack;
 using std::vector;
 using std::cout;
 
-PokerGameBase::PokerGameBase() : CardGameBase(false)
+Poker::Poker() : CardGame(true)
 {
 	// nimic
 }
 
-PokerGameBase::~PokerGameBase()
+Poker::Poker(bool shuffle) : CardGame(shuffle)
+{
+
+}
+
+Poker::~Poker()
 {
 	// nimic
 }
 
-void PokerGameBase::Play()
+void Poker::Play()
 {
 	// Begining
 	cout << "Hello and welcome to Poker! Would you like to play?\n";
 	cout << "1 for yes\n";
 	cout << "0 for no\n";
-	bool wantStart;
+	int wantStart;
 	std::cin >> wantStart;
 	if (!wantStart)
 	{
@@ -38,7 +43,9 @@ void PokerGameBase::Play()
 	{
 		// Game starts here
 		m_Hand = DealHand(m_Deck, 5);
+
 		ShowHand();
+
 		for (int i = 0; i < 5; i++)
 		{
 			bool wantChange;
@@ -58,7 +65,7 @@ void PokerGameBase::Play()
 		cout << "\n\nGame is Over! Would you like to continue?\n";
 		cout << "1 for yes\n";
 		cout << "0 for no\n";
-		bool wantRestart;
+		int wantRestart;
 		std::cin >> wantRestart;
 		if (!wantRestart)
 		{
@@ -72,7 +79,7 @@ void PokerGameBase::Play()
 	}
 }
 
-void PokerGameBase::ShowHand() 
+void Poker::ShowHand() 
 {
 	for (int i = 0; i < m_Hand.size(); i++)
 	{
@@ -80,7 +87,7 @@ void PokerGameBase::ShowHand()
 	}
 }
 
-PokerGameBase::PokerHand PokerGameBase::HandCheck()
+Poker::PokerHand Poker::HandCheck()
 {
 	SortHand();
 
@@ -157,7 +164,7 @@ PokerGameBase::PokerHand PokerGameBase::HandCheck()
 	return PokerHand::HighCard;
 }
 
-void PokerGameBase::WhatWinningHandIs(PokerHand pokerHand) 
+void Poker::WhatWinningHandIs(PokerHand pokerHand) 
 {
 	switch (pokerHand)
 	{
@@ -174,7 +181,7 @@ void PokerGameBase::WhatWinningHandIs(PokerHand pokerHand)
 	}
 }
 
-int PokerGameBase::CardNumberToInt(string cardNumber)
+int Poker::CardNumberToInt(string cardNumber)
 {
 	if (cardNumber == "A")
 	{
@@ -198,7 +205,7 @@ int PokerGameBase::CardNumberToInt(string cardNumber)
 
 	return std::stoi(cardNumber);
 }
-bool PokerGameBase::IsStraight(vector<Card> hand)
+bool Poker::IsStraight(vector<Card> hand)
 {
 	Card c1 = hand[0];
 	for (int i = 1; i < hand.size(); i++)
@@ -212,7 +219,7 @@ bool PokerGameBase::IsStraight(vector<Card> hand)
 
 	return true;
 }
-bool PokerGameBase::IsFlush(vector<Card> hand)
+bool Poker::IsFlush(vector<Card> hand)
 {
 	Card c1 = hand[0];
 	for (int i = 1; i < hand.size(); i++)
@@ -226,7 +233,7 @@ bool PokerGameBase::IsFlush(vector<Card> hand)
 
 	return true;
 }
-bool PokerGameBase::IsRoyal(vector<Card> hand, bool isStraight, bool isFlush)
+bool Poker::IsRoyal(vector<Card> hand, bool isStraight, bool isFlush)
 {
 	if (!(isStraight && isFlush))
 	{
@@ -250,7 +257,7 @@ bool PokerGameBase::IsRoyal(vector<Card> hand, bool isStraight, bool isFlush)
 	return (hasTen && hasAce);
 }
 
-void PokerGameBase::SortHand() 
+void Poker::SortHand() 
 {
 	map<int, vector<Card>> sorter;
 

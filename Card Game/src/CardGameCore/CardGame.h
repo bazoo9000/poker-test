@@ -1,9 +1,9 @@
 #pragma once
 
-#define SHOW_DECK_DEBUG
+#define DEBUG_MODE
 
 #include <iostream>
-#include <queue>
+#include <stack>
 #include <string>
 #include <vector>
 
@@ -18,31 +18,32 @@ struct Card
 	std::string ToString() { return Number + " " + Suit; }
 };
 
-class CardGameBase 
+class CardGame 
 {
 public:
-	CardGameBase(bool hasJoker = true);
-	~CardGameBase();
+	CardGame(bool shuffle);
+	~CardGame();
 
 public:
-#ifdef SHOW_DECK_DEBUG
+#ifdef DEBUG_MODE
 	void ShowDeck();
+	void ShowCard(int index);
 #endif
 	virtual void Play() = 0;
 
 protected:
-	void MakeDeck(std::vector<std::string> cardNumbers, std::vector<std::string> cardSuits, bool hasJoker);
-	void RandomizeDeck();
+	void MakeDeck(std::vector<std::string> cardNumbers, std::vector<std::string> cardSuits);
+	void ShuffleDeck();
 	void ClearDeck();
 	void ClearWasteDeck();
-	std::vector<Card> DealHand(std::queue<Card>& deck, std::size_t handSize);
-	Card DrawCard(std::queue<Card>& deck);
+	std::vector<Card> DealHand(std::stack<Card>& deck, std::size_t handSize);
+	Card DrawCard(std::stack<Card>& deck);
 
 protected:
-	std::queue<Card> m_Deck;
+	std::stack<Card> m_Deck;
 
 	// in case you try to play UNO for example, you create another deck to put the cards here
-	std::queue<Card> m_WasteDeck;
+	std::stack<Card> m_WasteDeck;
 
 private:
 	const std::vector<std::string> CARD_NUMBERS = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "CardGameBase.h"
+#include "CardGame.h"
 #include <map>
 
-class PokerGameBase : public CardGameBase
+class Poker : public CardGame
 {
 public:
 	enum class PokerHand
@@ -14,13 +14,18 @@ public:
 		FourOfKind, StraightFlush, RoyalFlush	// Tier 3
 	};
 
-	PokerGameBase();
-	~PokerGameBase();
+	Poker();
+	Poker(bool shuffle);
+	~Poker();
 
 public:
 	virtual void Play() override;
 
+#ifdef DEBUG_MODE
+public:
+#else
 private:
+#endif
 	void ShowHand();
 	PokerHand HandCheck();
 	void WhatWinningHandIs(PokerHand pokerHand);
